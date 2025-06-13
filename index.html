@@ -1,0 +1,74 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Brutalist Calc.</title>
+  <!-- Fonts for brutalist/neo-brutalist look -->
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black:wght@900&family=VT323&family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Hero Section -->
+  <div class="brutalist-hero glass-hero">
+    <div class="hero-title">
+      <span class="glitch-text">Brutalist<br>Calc.</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-tagline">
+      <span>The bold, glitchy, and reliable calculator</span>
+    </div>
+  </div>
+  <!-- Calculator -->
+  <div class="brutalist-calc">
+    <div class="calc-display glitch scrollable-output" id="display">0
+      <div class="glitch-overlay"></div>
+    </div>
+    <div class="calc-buttons">
+      <button class="btn" onclick="clearDisplay()">C</button>
+      <button class="btn" onclick="inputValue('/')">÷</button>
+      <button class="btn" onclick="inputValue('*')">×</button>
+      <button class="btn" onclick="deleteLast()">⌫</button>
+      <button class="btn" onclick="inputValue('7')">7</button>
+      <button class="btn" onclick="inputValue('8')">8</button>
+      <button class="btn" onclick="inputValue('9')">9</button>
+      <button class="btn" onclick="inputValue('-')">-</button>
+      <button class="btn" onclick="inputValue('4')">4</button>
+      <button class="btn" onclick="inputValue('5')">5</button>
+      <button class="btn" onclick="inputValue('6')">6</button>
+      <button class="btn" onclick="inputValue('+')">+</button>
+      <button class="btn" onclick="inputValue('1')">1</button>
+      <button class="btn" onclick="inputValue('2')">2</button>
+      <button class="btn" onclick="inputValue('3')">3</button>
+      <button class="btn equal" onclick="calculate()">=</button>
+      <button class="btn zero" onclick="inputValue('0')">0</button>
+      <button class="btn" onclick="inputValue('.')">.</button>
+    </div>
+  </div>
+  <!-- Toast container for errors -->
+  <div id="toast-container"></div>
+  <!-- Footer -->
+  <footer class="brutalist-footer">
+    <div class="footer-content">
+      <span class="footer-author">
+        <a href="https://jagathsajjan.vercel.app" target="_blank" rel="noopener noreferrer">Jagath-Sajjan</a>
+      </span>
+      <span class="footer-sep">|</span>
+      <a class="footer-github" href="https://github.com/jagath-sajjan/" target="_blank" rel="noopener noreferrer">
+        <!-- GitHub SVG Icon -->
+        <svg height="20" width="20" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:middle;margin-right:6px;">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+          0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
+          -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2
+          -3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64
+          -.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08
+          2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
+          1.93-.01 2.19 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        Github
+      </a>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
