@@ -1,0 +1,359 @@
+/* style.css */
+/* Liquid glass background, compact glassy hero, brutalist calc UI, scrollable output, toast errors, and brutalist footer :) */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black:wght@900&family=VT323&family=Poppins:wght@700&display=swap');
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Archivo Black', 'Arial Black', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(200,220,255,0.5) 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  top: -100px; left: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle at 30% 30%, #e0eaffcc 60%, #b3c6ff44 100%);
+  filter: blur(40px);
+  opacity: 0.7;
+  pointer-events: none;
+}
+body::after {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  bottom: -120px; right: -120px;
+  width: 420px; height: 420px;
+  background: radial-gradient(circle at 70% 70%, #fff8e0cc 60%, #ffe6b344 100%);
+  filter: blur(50px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Hero Section - glassy, compact, matches bg */
+.brutalist-hero {
+  max-width: 340px;
+  margin: 32px auto 18px auto;
+  background: rgba(255,255,255,0.55);
+  border: 3.5px solid #000;
+  border-radius: 16px;
+  box-shadow: 8px 8px 0 #000;
+  position: relative;
+  padding: 18px 18px 14px 18px;
+  z-index: 2;
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+}
+.hero-title {
+  margin-bottom: 6px;
+}
+.glitch-text {
+  font-family: 'Archivo Black', 'Arial Black', Arial, sans-serif;
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: #111;
+  line-height: 1.05;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+  text-shadow:
+    2px 2px 0 #e0eaff,
+    4px 4px 0 #000;
+}
+.hero-divider {
+  height: 4px;
+  background: #000;
+  border-radius: 2px;
+  margin: 10px 0 10px 0;
+  width: 100%;
+}
+.hero-tagline {
+  background: rgba(224,234,255,0.85);
+  border: 2.5px solid #000;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 7px 14px 6px 14px;
+  font-family: 'VT323', 'Courier New', Courier, monospace;
+  font-size: 1.08rem;
+  color: #111;
+  box-shadow: 2px 2px 0 #000;
+  margin-top: 0;
+  letter-spacing: 1px;
+}
+
+/* Calculator container */
+.brutalist-calc {
+  width: 340px;
+  border: 4px solid #000;
+  background: #fff;
+  box-shadow: 10px 10px 0 #000;
+  padding: 0;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+  margin: 0 auto 40px auto;
+  z-index: 2;
+  position: relative;
+}
+
+/* Calculator display with glitch overlay and scrollable output */
+.calc-display {
+  font-family: 'VT323', 'Courier New', Courier, monospace;
+  font-size: 2.6rem;
+  background: #eee;
+  border-bottom: 4px solid #000;
+  padding: 28px 16px 24px 16px;
+  text-align: right;
+  letter-spacing: 2px;
+  min-height: 48px;
+  user-select: all;
+  position: relative;
+  color: #111;
+  overflow-x: auto; /* allow horizontal scroll */
+  overflow-y: hidden;
+  white-space: nowrap; /* keep text in one line */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+.calc-display::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
+.glitch-overlay {
+  pointer-events: none;
+  position: absolute;
+  left: 0; top: 0; right: 0; bottom: 0;
+  z-index: 2;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0,0,0,0.04) 0px,
+    rgba(0,0,0,0.04) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  animation: glitch-move 1.2s infinite linear alternate;
+  mix-blend-mode: multiply;
+}
+@keyframes glitch-move {
+  0% { transform: translateY(0); opacity: 0.7; }
+  20% { transform: translateY(-2px) scaleX(1.01); opacity: 0.8; }
+  40% { transform: translateY(2px) scaleX(0.99); opacity: 0.6; }
+  60% { transform: translateY(-1px) scaleX(1.02); opacity: 0.7; }
+  80% { transform: translateY(1px) scaleX(0.98); opacity: 0.8; }
+  100% { transform: translateY(0); opacity: 0.7; }
+}
+
+/* Calculator buttons grid */
+.calc-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  background: #fff;
+}
+
+/* Calculator buttons */
+.btn {
+  font-family: 'Archivo Black', 'Arial Black', Arial, sans-serif;
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  position: relative;
+  border: 2.5px solid #000;
+  background: #fff;
+  padding: 26px 0;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 3px 3px 0 #000;
+  margin: 0;
+  overflow: hidden;
+  transition: box-shadow 0.12s, transform 0.09s, background 0.13s;
+  border-radius: 0;
+  color: #111;
+  filter: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="s"><feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="2" result="t"/><feDisplacementMap in2="t" in="SourceGraphic" scale="1" xChannelSelector="R" yChannelSelector="G"/></filter></svg>#s');
+}
+.btn:active {
+  transform: translate(2px, 2px) scale(0.97);
+  box-shadow: 1px 1px 0 #000;
+  background: #e0eaff;
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 0; height: 0;
+  background: #e0eaff;
+  opacity: 0.5;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.18s, height 0.18s, opacity 0.25s;
+  z-index: 1;
+  pointer-events: none;
+}
+.btn.clicked::after {
+  width: 220%;
+  height: 220%;
+  opacity: 0;
+  transition: width 0.18s, height 0.18s, opacity 0.25s;
+}
+.btn span, .btn {
+  position: relative;
+  z-index: 2;
+}
+.equal {
+  grid-row: span 2;
+  background: #000;
+  color: #fff;
+  font-weight: bold;
+  transition: background 0.1s, color 0.1s;
+}
+.equal:active {
+  background: #e0eaff;
+  color: #000;
+}
+.zero {
+  grid-column: span 2;
+}
+.btn:hover {
+  background: #e0eaff;
+  color: #000;
+}
+
+/* Toast error popup */
+#toast-container {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  pointer-events: none;
+}
+.toast {
+  min-width: 180px;
+  max-width: 320px;
+  background: #fff;
+  color: #111;
+  border: 3px solid #000;
+  box-shadow: 6px 6px 0 #000;
+  border-radius: 10px;
+  font-family: 'Archivo Black', 'Arial Black', Arial, sans-serif;
+  font-size: 1.05rem;
+  padding: 16px 22px 14px 18px;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  animation: toast-in 0.25s cubic-bezier(.68,-0.55,.27,1.55);
+  pointer-events: auto;
+  position: relative;
+}
+@keyframes toast-in {
+  0% { opacity: 0; transform: translateX(80px) scale(0.95);}
+  100% { opacity: 1; transform: translateX(0) scale(1);}
+}
+.toast-roast {
+  background: #ffe6e6;
+  color: #e60026;
+  border-color: #e60026;
+  font-family: 'VT323', 'Courier New', Courier, monospace;
+  font-size: 1.15rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.toast-close {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 1.2rem;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+  line-height: 1;
+}
+
+/* Brutalist Footer */
+.brutalist-footer {
+  width: 100vw;
+  background: #fff;
+  border-top: 4px solid #000;
+  box-shadow: 0 -6px 0 #000;
+  padding: 18px 0 14px 0;
+  margin-top: 32px;
+  font-family: 'Poppins', 'Archivo Black', Arial, sans-serif;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+.footer-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.footer-author a {
+  color: #111;
+  text-decoration: none;
+  font-weight: 700;
+  border-bottom: 2.5px solid #ffe600;
+  transition: color 0.15s, border-bottom 0.15s;
+}
+.footer-author a:hover {
+  color: #ffe600;
+  border-bottom: 2.5px solid #000;
+}
+.footer-sep {
+  color: #000;
+  font-weight: bold;
+  margin: 0 8px;
+}
+.footer-github {
+  display: flex;
+  align-items: center;
+  color: #111;
+  text-decoration: none;
+  font-weight: 700;
+  border-bottom: 2.5px solid #e0eaff;
+  transition: color 0.15s, border-bottom 0.15s;
+}
+.footer-github:hover {
+  color: #e60026;
+  border-bottom: 2.5px solid #000;
+}
+@media (max-width: 500px) {
+  .brutalist-hero {
+    max-width: 98vw;
+    padding: 12px 4vw 10px 4vw;
+  }
+  .glitch-text {
+    font-size: 1.3rem;
+  }
+  .hero-tagline {
+    font-size: 0.95rem;
+    padding: 6px 8px 5px 8px;
+  }
+  .brutalist-calc { width: 98vw; }
+  .calc-display { font-size: 1.3rem; padding: 18px 6px 14px 6px; }
+  .btn { font-size: 1.1rem; padding: 16px 0; }
+  #toast-container { right: 8px; bottom: 8px; }
+  .brutalist-footer {
+    font-size: 0.95rem;
+    padding: 12px 0 10px 0;
+  }
+  .footer-content {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
